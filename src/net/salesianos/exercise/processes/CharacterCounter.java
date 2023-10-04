@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import net.salesianos.exercise.utils.Utils;
+
 public class CharacterCounter {
     public static void main(String[] args) {
         String character = args[0].toLowerCase();
@@ -12,15 +14,10 @@ public class CharacterCounter {
         try {
             BufferedReader bf = new BufferedReader( new FileReader(route));
             String line = bf.readLine();
-            int counter = 0;
+            Integer counter = 0;
             while (line != null) {
-                String characterLine = "";
-                for (int i = 0; i < line.length(); i++) {
-                    characterLine = String.valueOf(line.charAt(i)).toLowerCase();
-                    if (characterLine.equals(character)){
-                        counter++;
-                    }
-                }
+                int aux = Utils.countCharacterByLine(line, character);
+                counter = aux + counter;
                 line = bf.readLine();
             }
             System.out.println(counter);
