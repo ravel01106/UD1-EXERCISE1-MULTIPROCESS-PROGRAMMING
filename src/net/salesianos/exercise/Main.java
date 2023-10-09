@@ -14,11 +14,11 @@ public class Main {
         if(outputFile.exists()){
             outputFile.delete();
         }
-        String[] VOCALS = {"a", "e", "i", "o", "u"};
+        String[] VOWELS = {"a", "e", "i", "o", "u"};
         ArrayList<Process> allProcess = new ArrayList<>();
-        for (String vocal : VOCALS) {
-            Process javaProcess = ProcessLauncher.initProcess(vocal);
-            allProcess.add(javaProcess);
+        for (String vowel : VOWELS) {
+            Process subprocess = ProcessLauncher.initProcess(vowel);
+            allProcess.add(subprocess);
         }
         for (Process process : allProcess) {
             try {
@@ -29,7 +29,7 @@ public class Main {
         }
 
         System.out.println("El texto es el siguiente:\n" + Utils.getText() + "\n");
-        Utils.printVocals(outputFile, VOCALS);
+        Utils.printVocals(outputFile, VOWELS);
 
     }
 }
