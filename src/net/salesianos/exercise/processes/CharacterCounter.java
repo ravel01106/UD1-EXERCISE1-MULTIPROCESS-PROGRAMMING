@@ -1,32 +1,17 @@
 package net.salesianos.exercise.processes;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-
-import net.salesianos.exercise.utils.Utils;
-
 public class CharacterCounter {
     public static void main(String[] args) {
         String character = args[0].toLowerCase();
-        String route = "./src/net/salesianos/exercise/input/prueba.txt";
-        try {
-            BufferedReader bf = new BufferedReader( new FileReader(route));
-            String line = bf.readLine();
-            Integer counter = 0;
-            while (line != null) {
-                int aux = Utils.countCharacterByLine(line, character);
-                counter = aux + counter;
-                line = bf.readLine();
+        String text = args[1];
+        String characterLine = "";
+        Integer counter = 0;
+        for (int i = 0; i < text.length(); i++) {
+            characterLine = String.valueOf(text.charAt(i));
+            if (characterLine.equals(character)){
+                counter++;
             }
-            System.out.println(counter);
-            bf.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+        System.out.println(counter);
     }
 }
