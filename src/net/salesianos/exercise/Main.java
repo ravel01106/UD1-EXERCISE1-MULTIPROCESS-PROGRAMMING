@@ -10,10 +10,7 @@ import net.salesianos.exercise.utils.Utils;
 
 public class Main {
     public static void main(String[] args) {
-        File outputFile = new File(ProcessLauncher.OUTPUT_ROUTE + ProcessLauncher.OUTPUT_FILE_NAME);
-        if(outputFile.exists()){
-            outputFile.delete();
-        }
+        File outputFile = ProcessLauncher.OUTPUT_FILE;
         String[] VOWELS = {"a", "e", "i", "o", "u"};
         ArrayList<Process> allProcess = new ArrayList<>();
         for (String vowel : VOWELS) {
@@ -30,6 +27,7 @@ public class Main {
 
         System.out.println("El texto es el siguiente:\n" + Utils.getText() + "\n");
         Utils.printVocals(outputFile, VOWELS);
+        Utils.removeOutputFile(outputFile);
 
     }
 }

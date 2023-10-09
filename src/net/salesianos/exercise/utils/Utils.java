@@ -6,19 +6,21 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+//import net.salesianos.exercise.launcher.ProcessLauncher;
+
 public class Utils {
     
     public static String getText(){
-        String route = "./src/net/salesianos/exercise/input/lorem_ipsum.txt";
+        String INPUT_ROUTE = "./src/net/salesianos/exercise/input/lorem_ipsum.txt";
         String text = "";
         try {
-            BufferedReader bf = new BufferedReader(new FileReader(route));
-            String line = bf.readLine();
+            BufferedReader inputFileReader = new BufferedReader(new FileReader(INPUT_ROUTE));
+            String line = inputFileReader.readLine();
             while(line != null){
                 text += line.toLowerCase();
-                line = bf.readLine();
+                line = inputFileReader.readLine();
             }
-            bf.close();
+            inputFileReader.close();
             return text;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -27,21 +29,21 @@ public class Utils {
         }
         return null;
     }
-    public static void printVocals(File outputFile, String[] vocals){
+    public static void printVocals(File outputFile, String[] vowels){
         try {
-            BufferedReader bf = new BufferedReader(new FileReader(outputFile));
-            String line = bf.readLine();
-            int TotalVocals = 0;
-            for (String vocal : vocals) {
+            BufferedReader outputFileReader = new BufferedReader(new FileReader(outputFile));
+            String line = outputFileReader.readLine();
+            int totalVowels = 0;
+            for (String vowel : vowels) {
                 if(line != null){
-                    System.out.println("El texto tiene " + line + " vocales " + vocal + ".");
-                    TotalVocals += convertStringNumeric(line);
-                    line = bf.readLine();
+                    System.out.println("El texto tiene " + line + " vocales " + vowel + ".");
+                    totalVowels += convertStringNumeric(line);
+                    line = outputFileReader.readLine();
                 }
             }
-            System.out.println("Y el total de vocales es " + TotalVocals + ".");
+            System.out.println("Y el total de vocales es " + totalVowels + ".");
 
-            bf.close();
+            outputFileReader.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -53,6 +55,11 @@ public class Utils {
             return Integer.parseInt(line);
         } catch (NumberFormatException e) {
             return 0;
+        }
+    }
+    public static void removeOutputFile(File outputFile) {
+        if(outputFile.exists()){
+            outputFile.delete();
         }
     }
 }
