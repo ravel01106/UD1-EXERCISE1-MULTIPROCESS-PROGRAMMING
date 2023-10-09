@@ -25,7 +25,7 @@ public class Main {
             }
         }
 
-        System.out.println("El texto es el siguiente:\n" + Utils.getText() + "\n");
+        Utils.printText();
         Utils.printVocals(outputFile, VOWELS);
         Utils.removeOutputFile(outputFile);
 

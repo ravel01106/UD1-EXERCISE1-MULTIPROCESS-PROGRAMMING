@@ -29,6 +29,11 @@ public class Utils {
         }
         return null;
     }
+
+    public static void printText(){
+        System.out.println("El texto es el siguiente:\n" + getText() + "\n");
+    }
+
     public static void printVocals(File outputFile, String[] vowels){
         try {
             BufferedReader outputFileReader = new BufferedReader(new FileReader(outputFile));
@@ -50,6 +55,7 @@ public class Utils {
             e.printStackTrace();
         }
     }
+
     private static Integer convertStringNumeric(String line){
         try {
             return Integer.parseInt(line);
@@ -57,6 +63,7 @@ public class Utils {
             return 0;
         }
     }
+    
     public static void removeOutputFile(File outputFile) {
         if(outputFile.exists()){
             outputFile.delete();
