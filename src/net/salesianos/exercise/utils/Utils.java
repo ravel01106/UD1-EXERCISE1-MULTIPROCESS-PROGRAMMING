@@ -42,7 +42,7 @@ public class Utils {
             for (String vowel : vowels) {
                 if(line != null){
                     System.out.println("El texto tiene " + line + " vocales " + vowel + ".");
-                    totalVowels += convertStringNumeric(line);
+                    totalVowels += convertStringToNumeric(line);
                     line = outputFileReader.readLine();
                 }
             }
@@ -56,7 +56,7 @@ public class Utils {
         }
     }
 
-    private static Integer convertStringNumeric(String line){
+    private static Integer convertStringToNumeric(String line){
         try {
             return Integer.parseInt(line);
         } catch (NumberFormatException e) {
